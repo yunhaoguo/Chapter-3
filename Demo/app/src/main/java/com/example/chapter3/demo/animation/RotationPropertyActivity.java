@@ -1,14 +1,11 @@
 package com.example.chapter3.demo.animation;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chapter3.demo.R;
 
