@@ -29,26 +29,9 @@ public class Ch3Ex3Activity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.viewpager);
         TabLayout tabLayout = findViewById(R.id.top_tab);
         final List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new FriendListFragment());
+        fragments.add(new PlaceholderFragment());
         fragments.add(new MyFriendsFragment());
         viewPager.setAdapter(new MyViewPagerAdapter(fragments, getSupportFragmentManager()));
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-            @Override
-            public void onPageSelected(int i) {
-                if (fragments.get(i) instanceof ILoadingFragment) {
-                    ((ILoadingFragment)fragments.get(i)).loadAndShow();
-                }
-            }
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-
         // TODO: ex3-2, 添加 TabLayout 支持 Tab
         tabLayout.setupWithViewPager(viewPager);
     }
