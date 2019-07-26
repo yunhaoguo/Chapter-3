@@ -1,7 +1,16 @@
 package com.example.chapter3.homework;
 
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 使用 ViewPager 和 Fragment 做一个简单版的好友列表界面
@@ -16,12 +25,31 @@ public class Ch3Ex3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ch3ex3);
 
-
-
         // TODO: ex3-1. 添加 ViewPager 和 Fragment 做可滑动界面
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        TabLayout tabLayout = findViewById(R.id.top_tab);
+        final List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new FriendListFragment());
+        fragments.add(new MyFriendsFragment());
+        viewPager.setAdapter(new MyViewPagerAdapter(fragments, getSupportFragmentManager()));
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
 
+            }
+            @Override
+            public void onPageSelected(int i) {
+                if (fragments.get(i) instanceof ILoadingFragment) {
+                    ((ILoadingFragment)fragments.get(i)).loadAndShow();
+                }
+            }
+            @Override
+            public void onPageScrollStateChanged(int i) {
 
+            }
+        });
 
         // TODO: ex3-2, 添加 TabLayout 支持 Tab
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

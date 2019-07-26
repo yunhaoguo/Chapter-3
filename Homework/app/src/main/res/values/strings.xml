@@ -9,4 +9,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zhaoshe">赵赦</string>
+    <string name="zhaojing">赵镜</string>
+    <string name="guoyunhao">郭云皓</string>
+    <string name="kaiyuan">开元</string>
 </resources>

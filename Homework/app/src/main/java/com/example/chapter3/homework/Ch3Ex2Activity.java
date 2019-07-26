@@ -132,17 +132,30 @@ public class Ch3Ex2Activity extends AppCompatActivity {
                 "backgroundColor",
                 getBackgroundColor(startColorPicker),
                 getBackgroundColor(endColorPicker));
-        animator1.setDuration(Integer.parseInt(durationSelector.getText().toString()));
-        animator1.setRepeatCount(ObjectAnimator.INFINITE);
-        animator1.setRepeatMode(ObjectAnimator.REVERSE);
+        setAnimatorProperties(animator1);
 
         // TODO ex2-1：在这里实现另一个 ObjectAnimator，对 target 控件的大小进行缩放，从 1 到 2 循环
+        ObjectAnimator animator2 = ObjectAnimator.ofFloat(target,
+                "scaleX", 1, 2);
+        setAnimatorProperties(animator2);
+        ObjectAnimator animator3 = ObjectAnimator.ofFloat(target,
+                "scaleY", 1, 2);
+        setAnimatorProperties(animator3);
 
         // TODO ex2-2：在这里实现另一个 ObjectAnimator，对 target 控件的透明度进行修改，从 1 到 0.5f 循环
+        ObjectAnimator animator4 = ObjectAnimator.ofFloat(target,
+                "alpha",  1, 0.5f);
+        setAnimatorProperties(animator4);
 
         // TODO ex2-3: 将上面创建的其他 ObjectAnimator 都添加到 AnimatorSet 中
         animatorSet = new AnimatorSet();
-        animatorSet.playTogether(animator1);
+        animatorSet.playTogether(animator1, animator2, animator3, animator4);
         animatorSet.start();
+    }
+
+    private void setAnimatorProperties(ObjectAnimator animator) {
+        animator.setDuration(Integer.parseInt(durationSelector.getText().toString()));
+        animator.setRepeatCount(ObjectAnimator.INFINITE);
+        animator.setRepeatMode(ObjectAnimator.REVERSE);
     }
 }
